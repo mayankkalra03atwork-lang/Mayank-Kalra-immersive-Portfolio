@@ -16,9 +16,15 @@ export function AboutSection({ onOpenResume }: AboutSectionProps) {
         <div className="lg:col-span-5 space-y-6">
           <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-square max-w-md bg-zinc-900">
             <img
-              src="/src/assets/images/mayank_portrait_1790162642678.jpg"
+              src="/images/mayank_portrait_1790162642678.jpg"
               alt="Editorial portrait of Mayank Kalra"
-              referrerPolicy="no-referrer"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.endsWith('/images/about.jpg')) {
+                  target.src = '/images/about.jpg';
+                }
+              }}
               className="w-full h-full object-cover grayscale contrast-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
